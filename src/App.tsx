@@ -10,7 +10,8 @@ import {
   Clock, 
   ThumbsUp, 
   HelpCircle, 
-  ChevronDown 
+  ChevronDown,
+  User
 } from 'lucide-react';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import Calculator from './components/Calculator';
