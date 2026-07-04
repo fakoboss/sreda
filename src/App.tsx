@@ -211,7 +211,7 @@ export default function App() {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
               <img
-                src="/главное фото-clean.png"
+                src="/hero-image.png"
                 alt="Красивый готовый интерьер квартиры"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
