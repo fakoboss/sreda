@@ -74,7 +74,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     description: 'Дизайнерский ремонт в стиле лофт с сохранением фактуры оригинального кирпича, декоративной штукатуркой под бетон и открытой дизайнерской ретро-проводкой.',
     category: 'living-room',
     beforeImage: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
+    afterImage: getAssetPath('loft-after.png'),
     duration: '42 дня',
     cost: 980000,
     area: 45,
