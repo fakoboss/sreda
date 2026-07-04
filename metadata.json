@@ -1,0 +1,6 @@
+{
+  "name": "Ремонт Квартир",
+  "description": "Портфолио компании по ремонту квартир с интерактивным сравнением до/после, калькулятором стоимости и формой обратной связи.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
