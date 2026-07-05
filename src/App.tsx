@@ -49,6 +49,62 @@ const TESTIMONIALS: Testimonial[] = [
     text: 'Заказывал косметический ремонт студии под сдачу в аренду. Бюджет был сильно ограничен. Мне предложили отличный эконом-вариант: подобрали очень прочные обои под покраску, износостойкий линолеум и быстро привели квартиру в товарный вид за 12 дней! Работали слаженно, мусор за собой полностью убрали.',
     rating: 5,
     date: '02 июня 2026 г.'
+  },
+  {
+    id: 'test-4',
+    author: 'Анна Белякова',
+    role: 'Владелица трехкомнатной квартиры',
+    text: 'Делали ремонт в новостройке. Стены были кривые, требовалось серьезное выравнивание. Прораб с самого начала все грамотно объяснил и показал на что обратить внимание. Работа была выполнена безупречно! Стены как под уровень, все углы 90 градусов. Спасибо за профессионализм и внимание к деталям.',
+    rating: 5,
+    date: '19 июня 2026 г.'
+  },
+  {
+    id: 'test-5',
+    author: 'Сергей Горшков',
+    role: 'Владелец квартиры в ЖК «Символ»',
+    text: 'Впервые столкнулись с ремонтом и очень боялись нарваться на недобросовестных подрядчиков. Здесь все прозрачно: договор с детальной сметой, поэтапная оплата, фотоотчеты каждые 3 дня. Ни одного скрытого платежа! Результатом довольны на все 100%. Рекомендую всем своим знакомым!',
+    rating: 5,
+    date: '25 мая 2026 г.'
+  },
+  {
+    id: 'test-6',
+    author: 'Елена Кириллова',
+    role: 'Владелица однокомнатной квартиры',
+    text: 'Обратилась за косметическим ремонтом однушки перед продажей. Нужно было сделать быстро и недорого. Бригада справилась за 10 дней! Поклеили обои, положили ламинат, заменили сантехнику. Квартира преобразилась и продалась на 300 тысяч дороже благодаря свежему виду!',
+    rating: 5,
+    date: '07 июня 2026 г.'
+  },
+  {
+    id: 'test-7',
+    author: 'Владимир Петров',
+    role: 'Владелец квартиры на Кутузовском',
+    text: 'Заказывали премиум ремонт с авторским дизайном. Работа ювелирная: венецианская штукатурка, паркет с инкрустацией, лепнина на потолках. Дизайнер и прораб постоянно на связи, корректировали детали по ходу. Получилось даже лучше 3D-визуализации! Жена в восторге, гости не перестают восхищаться.',
+    rating: 5,
+    date: '11 мая 2026 г.'
+  },
+  {
+    id: 'test-8',
+    author: 'Ольга Смирнова',
+    role: 'Владелица квартиры в ЖК «Сколково Парк»',
+    text: 'Ремонтировали квартиру для сдачи в аренду. Важно было уложиться в бюджет и получить качественный результат. Ребята предложили оптимальные материалы по соотношению цена-качество. Все сделали аккуратно, быстро, без переплат. Квартира сдается уже полгода — никаких нареканий от арендаторов!',
+    rating: 5,
+    date: '15 июня 2026 г.'
+  },
+  {
+    id: 'test-9',
+    author: 'Игорь Васильев',
+    role: 'Владелец двухкомнатной квартиры',
+    text: 'После протечки от соседей нужен был срочный ремонт. Обратился сюда — приехали на следующий день, оценили масштаб работ, составили смету. За 3 недели полностью восстановили санузел и часть комнаты. Все было сделано качественно и в срок. Отдельное спасибо за помощь с документами для страховой!',
+    rating: 5,
+    date: '22 мая 2026 г.'
+  },
+  {
+    id: 'test-10',
+    author: 'Мария Захарова',
+    role: 'Владелица квартиры-студии',
+    text: 'Делали ремонт студии в новостройке. Хотелось современный стиль с элементами лофта. Дизайнер предложил отличное решение: открытая проводка, декоративный кирпич, бетонная стяжка с лаком. Получилось стильно и в рамках бюджета. Все друзья спрашивают контакты ваших мастеров!',
+    rating: 5,
+    date: '30 мая 2026 г.'
   }
 ];
 
@@ -411,9 +467,9 @@ export default function App() {
       {/* PORTFOLIO GRID SHOWCASE */}
       <Portfolio />
 
-      {/* CLIENT REVIEWS / TESTIMONIALS */}
-      <section id="reviews-section" className="py-20 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
+      {/* CLIENT REVIEWS / TESTIMONIALS - AUTO SCROLLING */}
+      <section id="reviews-section" className="py-20 bg-slate-50 border-t border-slate-200 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
           
           {/* Header */}
           <div className="text-center mb-16">
@@ -428,47 +484,94 @@ export default function App() {
             </p>
           </div>
 
-          {/* Testimonial Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((test) => (
-              <div 
-                key={test.id} 
-                className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-xs flex flex-col justify-between"
-              >
-                <div>
-                  {/* Rating Stars */}
-                  <div className="flex gap-1 mb-4 text-indigo-600">
-                    {[...Array(test.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-indigo-600" />
-                    ))}
-                  </div>
+          {/* Auto-Scrolling Testimonial Cards Container */}
+          <div className="relative">
+            {/* Gradient Overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
 
-                  {/* Body Text */}
-                  <p className="text-xs text-slate-600 font-sans leading-relaxed italic mb-6">
-                    "{test.text}"
-                  </p>
-                </div>
-
-                {/* Author Info */}
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                  <div className="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-                    <User className="w-6 h-6 text-slate-400" />
-                  </div>
+            {/* Scrolling wrapper */}
+            <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused]">
+              {/* First set of testimonials */}
+              {TESTIMONIALS.map((test) => (
+                <div 
+                  key={test.id} 
+                  className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-w-[350px] max-w-[350px] flex-shrink-0"
+                >
                   <div>
-                    <span className="font-sans font-bold text-xs text-slate-900 block leading-tight">
-                      {test.author}
-                    </span>
-                    <span className="text-[10px] text-slate-400 font-sans block mt-0.5">
-                      {test.role}
-                    </span>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-mono ml-auto">
-                    {test.date.split(' ')[0]} {test.date.split(' ')[1]}
-                  </span>
-                </div>
+                    {/* Rating Stars */}
+                    <div className="flex gap-1 mb-4 text-indigo-600">
+                      {[...Array(test.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-indigo-600" />
+                      ))}
+                    </div>
 
-              </div>
-            ))}
+                    {/* Body Text */}
+                    <p className="text-xs text-slate-600 font-sans leading-relaxed italic mb-6">
+                      "{test.text}"
+                    </p>
+                  </div>
+
+                  {/* Author Info */}
+                  <div className="flex items-start gap-3 pt-4 border-t border-slate-100">
+                    <div className="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
+                      <User className="w-6 h-6 text-slate-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-sans font-bold text-xs text-slate-900 block leading-tight">
+                        {test.author}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-sans block mt-0.5">
+                        {test.role}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono block mt-1">
+                        {test.date}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Duplicate set for seamless loop */}
+              {TESTIMONIALS.map((test) => (
+                <div 
+                  key={`${test.id}-duplicate`} 
+                  className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-w-[350px] max-w-[350px] flex-shrink-0"
+                >
+                  <div>
+                    {/* Rating Stars */}
+                    <div className="flex gap-1 mb-4 text-indigo-600">
+                      {[...Array(test.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-indigo-600" />
+                      ))}
+                    </div>
+
+                    {/* Body Text */}
+                    <p className="text-xs text-slate-600 font-sans leading-relaxed italic mb-6">
+                      "{test.text}"
+                    </p>
+                  </div>
+
+                  {/* Author Info */}
+                  <div className="flex items-start gap-3 pt-4 border-t border-slate-100">
+                    <div className="w-11 h-11 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
+                      <User className="w-6 h-6 text-slate-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="font-sans font-bold text-xs text-slate-900 block leading-tight">
+                        {test.author}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-sans block mt-0.5">
+                        {test.role}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono block mt-1">
+                        {test.date}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Verification Badge */}
