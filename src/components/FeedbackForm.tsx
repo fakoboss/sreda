@@ -132,7 +132,7 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
         </div>
 
         {/* Content Box */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Form Side */}
           <div className="lg:col-span-7 bg-white p-6 md:p-10 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40">
@@ -306,24 +306,24 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
           </div>
 
           {/* Guidelines / Benefits Panel */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-8">
-            <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-6 flex-grow">
-              <h3 className="font-display font-bold text-lg text-slate-900">Почему мы?</h3>
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-white border border-slate-200 p-5 md:p-6 rounded-3xl space-y-4">
+              <h3 className="font-display font-bold text-base text-slate-900">Почему мы?</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {[
                   { title: 'Работаем по договору', desc: 'Сроки и финальная смета фиксируются в юридическом договоре. Никаких доплат в процессе.' },
                   { title: 'Поэтапная оплата', desc: 'Вы платите только за фактически выполненные и принятые вами этапы работ. Никакой 100% предоплаты.' },
                   { title: 'Контроль 24/7', desc: 'Регулярные фото- и видеоотчеты в Telegram/WhatsApp. Вы видите весь процесс ремонта удаленно.' },
                   { title: 'Гарантия 3 года', desc: 'Мы несем полную ответственность за качество и даем официальную письменную гарантию на все виды работ.' }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex gap-4 items-start">
-                    <div className="bg-indigo-50 text-indigo-800 font-mono text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div key={idx} className="flex gap-3 items-start">
+                    <div className="bg-indigo-50 text-indigo-800 font-mono text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       {idx + 1}
                     </div>
                     <div>
-                      <h4 className="font-sans font-bold text-sm text-slate-900">{item.title}</h4>
-                      <p className="font-sans text-xs text-slate-500 mt-1 leading-relaxed">{item.desc}</p>
+                      <h4 className="font-sans font-bold text-xs text-slate-900">{item.title}</h4>
+                      <p className="font-sans text-[11px] text-slate-500 mt-0.5 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -331,7 +331,7 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
             </div>
 
             {/* Direct Instant Contact info */}
-            <div className="bg-slate-950 p-6 md:p-8 rounded-3xl text-white text-center flex-shrink-0">
+            <div className="bg-slate-950 p-5 md:p-6 rounded-3xl text-white text-center">
               <span className="text-[10px] uppercase font-mono tracking-widest text-indigo-400 font-bold">Прямая линия</span>
               <div className="text-2xl font-mono font-bold mt-2 hover:text-indigo-400 transition-colors">
                 <a href="tel:+79935243862">+7 (993) 524-38-62</a>
