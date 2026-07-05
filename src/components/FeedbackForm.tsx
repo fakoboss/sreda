@@ -132,7 +132,7 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
         </div>
 
         {/* Content Box */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           
           {/* Form Side */}
           <div className="lg:col-span-7 bg-white p-6 md:p-10 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40">
@@ -306,8 +306,8 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
           </div>
 
           {/* Guidelines / Benefits Panel */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-6">
+          <div className="lg:col-span-5 flex flex-col justify-between gap-8">
+            <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-3xl space-y-6 flex-grow">
               <h3 className="font-display font-bold text-lg text-slate-900">Почему мы?</h3>
               
               <div className="space-y-4">
@@ -331,7 +331,7 @@ export default function FeedbackForm({ initialEstimate, onClearEstimate }: Feedb
             </div>
 
             {/* Direct Instant Contact info */}
-            <div className="bg-slate-950 p-6 md:p-8 rounded-3xl text-white text-center">
+            <div className="bg-slate-950 p-6 md:p-8 rounded-3xl text-white text-center flex-shrink-0">
               <span className="text-[10px] uppercase font-mono tracking-widest text-indigo-400 font-bold">Прямая линия</span>
               <div className="text-2xl font-mono font-bold mt-2 hover:text-indigo-400 transition-colors">
                 <a href="tel:+79935243862">+7 (993) 524-38-62</a>
