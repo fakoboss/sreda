@@ -111,7 +111,7 @@ export default function App() {
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-10 h-10 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
               <img 
-                src={getAssetPath("logo.png")} 
+                src={getAssetPath("logo.avif")} 
                 alt="SREDA" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -212,7 +212,7 @@ export default function App() {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
               <img
-                src={getAssetPath("hero-image.png")}
+                src={getAssetPath("hero-image.jpg")}
                 alt="Красивый готовый интерьер квартиры"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -545,7 +545,7 @@ export default function App() {
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 flex items-center justify-center overflow-hidden">
                 <img 
-                  src={getAssetPath("logo.png")} 
+                  src={getAssetPath("logo.avif")} 
                   alt="SREDA" 
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"

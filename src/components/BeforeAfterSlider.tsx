@@ -47,8 +47,8 @@ const SLIDERS: SliderData[] = [
     id: 'kitchen',
     title: 'Кухня-гостиная на Патриарших',
     desc: 'Интеграция кухонной зоны в жилую комнату с премиальной шумоизоляцией пола и стен. Классические молдинги на стенах в сочетании с современными материалами.',
-    before: getAssetPath('patriarshie-before.png'),
-    after: getAssetPath('patriarshie-after.png'),
+    before: getAssetPath('patriarshie-before.avif'),
+    after: getAssetPath('patriarshie-after.avif'),
     tags: ['Неоклассика', 'Площадь: 28 м²', 'Срок: 28 дней'],
     details: [
       { label: 'Шумоизоляция', value: 'панели Soundguard на полу и стенах' },
