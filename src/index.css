@@ -28,6 +28,20 @@
   animation: scroll-left 60s linear infinite;
 }
 
+/* Star bounce animation for mobile testimonials */
+@keyframes star-bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+.animate-star-bounce {
+  animation: star-bounce 0.6s ease-in-out;
+}
+
 /* Scroll behavior */
 html {
   scroll-behavior: smooth;

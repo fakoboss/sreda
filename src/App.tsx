@@ -11,7 +11,9 @@ import {
   ThumbsUp, 
   HelpCircle, 
   ChevronDown,
-  User
+  User,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import Calculator from './components/Calculator';
@@ -140,6 +142,7 @@ export default function App() {
   } | null>(null);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const handleEstimateReceived = (estimate: {
     area: number;
@@ -154,6 +157,14 @@ export default function App() {
 
   const clearEstimate = () => {
     setSelectedEstimate(null);
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   };
 
   return (
@@ -484,9 +495,8 @@ export default function App() {
             </p>
           </div>
 
-          {/* Auto-Scrolling Testimonial Cards Container */}
-          <div className="relative -mx-4 md:-mx-8">
-            {/* Scrolling wrapper */}
+          {/* DESKTOP: Auto-Scrolling Testimonial Cards */}
+          <div className="hidden md:block relative -mx-4 md:-mx-8">
             <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused] pl-4 md:pl-8">
               {/* First set of testimonials */}
               {TESTIMONIALS.map((test) => (
@@ -566,6 +576,101 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* MOBILE: Single Card Carousel with Navigation */}
+          <div className="md:hidden relative">
+            <div className="relative overflow-hidden">
+              {/* Testimonial Cards Container */}
+              <div 
+                className="flex transition-transform duration-700 ease-out"
+                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+              >
+                {TESTIMONIALS.map((test, index) => (
+                  <div 
+                    key={test.id}
+                    className="w-full flex-shrink-0 px-2"
+                  >
+                    <div 
+                      className={`bg-white rounded-3xl p-8 border-2 shadow-xl flex flex-col justify-between min-h-[420px] transition-all duration-700 ${
+                        index === currentTestimonial 
+                          ? 'border-indigo-500 scale-100 opacity-100' 
+                          : 'border-slate-200 scale-95 opacity-60'
+                      }`}
+                    >
+                      <div>
+                        {/* Rating Stars with animation */}
+                        <div className="flex gap-1 mb-6 text-indigo-600 justify-center">
+                          {[...Array(test.rating)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              className="w-5 h-5 fill-indigo-600 animate-star-bounce"
+                              style={{ animationDelay: `${i * 100}ms` }}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Body Text */}
+                        <p className="text-sm text-slate-700 font-sans leading-relaxed italic mb-6 text-center">
+                          "{test.text}"
+                        </p>
+                      </div>
+
+                      {/* Author Info */}
+                      <div className="flex flex-col items-center gap-4 pt-6 border-t border-slate-100">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 border-2 border-indigo-300 flex items-center justify-center shadow-lg">
+                          <User className="w-8 h-8 text-indigo-600" />
+                        </div>
+                        <div className="text-center">
+                          <span className="font-sans font-bold text-base text-slate-900 block leading-tight">
+                            {test.author}
+                          </span>
+                          <span className="text-xs text-slate-500 font-sans block mt-1">
+                            {test.role}
+                          </span>
+                          <span className="text-xs text-slate-400 font-mono block mt-2">
+                            {test.date}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-12 h-12 bg-white border-2 border-indigo-600 rounded-full shadow-xl flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 active:scale-90 z-10"
+              aria-label="Предыдущий отзыв"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-12 h-12 bg-white border-2 border-indigo-600 rounded-full shadow-xl flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 active:scale-90 z-10"
+              aria-label="Следующий отзыв"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Progress Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {TESTIMONIALS.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`transition-all duration-500 rounded-full ${
+                    index === currentTestimonial
+                      ? 'w-8 h-2 bg-indigo-600'
+                      : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Перейти к отзыву ${index + 1}`}
+                />
               ))}
             </div>
           </div>
